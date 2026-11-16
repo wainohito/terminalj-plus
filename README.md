@@ -11,8 +11,10 @@ Ported-from: RenkuOS/source src/apps/terminal @ d1c95db0, with the change
 Ported-from-license: MIT
 
 Changes from Terminal: the inline input patch, the signature, the name, the
-settings folder, and the translations of Terminal relinked for the new
-signature.
+settings folder, the translations of Terminal relinked for the new
+signature, and the icon: Terminal's with an orange "+" badge, added by
+`tools/add_plus.py` (`tools/preview.py` draws a rough preview of an HVIF
+icon).
 
     make            # cross build, needs a built RenkuOS tree in $RENKU
     make hpkg       # build/terminalj_plus-<version>-x86_64.hpkg

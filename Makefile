@@ -87,6 +87,8 @@ hpkg: $(APP) $(CATALOGS) packaging/PackageInfo.in
 	$(XRES) -o "$(ROOT)/apps/TerminalJ+" $(BUILD)/TerminalJ+.rsrc
 	$(ADDATTR) -t mime BEOS:TYPE application/x-vnd.Be-elfexecutable "$(ROOT)/apps/TerminalJ+"
 	$(ADDATTR) -t mime BEOS:APP_SIG application/$(SIGNATURE) "$(ROOT)/apps/TerminalJ+"
+	python3 -I tools/rdef_icon.py app/TerminalJ+.rdef $(BUILD)/TerminalJ+.hvif
+	$(ADDATTR) -f $(BUILD)/TerminalJ+.hvif -c VICN BEOS:ICON "$(ROOT)/apps/TerminalJ+"
 	cp $(CATALOGS) $(ROOT)/data/locale/catalogs/$(SIGNATURE)/
 	cp LICENSE "$(ROOT)/data/licenses/TerminalJ+"
 	ln -s ../../../../apps/TerminalJ+ "$(ROOT)/data/deskbar/menu/Applications/TerminalJ+"
