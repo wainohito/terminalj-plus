@@ -1,6 +1,6 @@
 name			terminalj_plus
 version			@VERSION@
-architecture	x86_64
+architecture	@ARCH@
 summary			"Terminal with inline Japanese input"
 description		"TerminalJ+ is the RenkuOS Terminal with inline input methods: text typed with Mozc and other input methods is composed and converted where the cursor is, not in a separate window. It lives next to Terminal, with its own settings."
 packager		"RenkuOS"
@@ -19,6 +19,5 @@ provides		{
 	app:TerminalJ+ = @VERSION@
 }
 requires		{
-	haiku
-	lib:libstdc++
+	@REQUIRES@
 }
