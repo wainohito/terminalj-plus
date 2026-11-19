@@ -9,7 +9,7 @@
 # $(RENKU)/generated.x86_gcc2h).
 
 VERSION = 1.0.0
-PKG_VERSION = $(VERSION)-1
+PKG_VERSION = $(VERSION)-2
 SIGNATURE = x-vnd.RenkuOS-TerminalJPlus
 ARCH ?= x86_64
 
@@ -120,6 +120,9 @@ hpkg: $(APP) $(CATALOGS) packaging/PackageInfo.in
 		$(ROOT)/data/locale/catalogs/$(SIGNATURE) $(ROOT)/data/licenses
 	$(STRIP) -o "$(ROOT)/apps/TerminalJ+" $(APP)
 	$(XRES) -o "$(ROOT)/apps/TerminalJ+" $(BUILD)/TerminalJ+.rsrc
+	# The executable bit does not survive strip -o everywhere (the 32-bit
+	# package had none, and TerminalJ+ could not be launched).
+	chmod 755 "$(ROOT)/apps/TerminalJ+"
 	$(ADDATTR) -t mime BEOS:TYPE application/x-vnd.Be-elfexecutable "$(ROOT)/apps/TerminalJ+"
 	$(ADDATTR) -t mime BEOS:APP_SIG application/$(SIGNATURE) "$(ROOT)/apps/TerminalJ+"
 	python3 -I tools/rdef_icon.py app/TerminalJ+.rdef $(BUILD)/TerminalJ+.hvif
